@@ -3,8 +3,8 @@
       }
       .location-data {
         position: absolute;
-        right: 10%;
-        top: 24%;
+        right: 4%;
+        top: 50%;
         padding: 35px 20px 20px;
         border-radius: 4px;
         opacity: 0.9;
@@ -15,7 +15,8 @@
         background-size: contain;
         background: #292c29;
         border: 1px solid var(--main-bg-color);
-        width: 450px;
+        max-width: 450px;
+        transform: translateY(-50%);
       }
       .location-data::before,
       .location-data::after {
@@ -78,7 +79,7 @@
         border-color: #c87474;
       }
       .sec-loca-map-comp-1 button:nth-child(3) {
-        border-https://cdn.jsdelivr.net/gh/ucodesoftdev/novus@1.0.0/location-v4.csscolor: #926dc1;
+        border-color: #926dc1;
       }
       .sec-loca-map-comp-1 button:nth-child(4) {
         border-color: #e7c28c;
@@ -219,22 +220,25 @@
           font-size: 13px;
         }
         .location-data {
-          height: fit-content;
-          background-position: top;
-          padding: 18px 20px 20px 20px;
-          top: 58%;
-          width: 231px;
           opacity: 1;
           bottom: 0;
           left: 0;
           right: 0;
-          margin: auto;
-          margin-bottom: 0;
+          margin: auto 15px;
+          transform: translateY(0px);
+          top: auto;
+        }
+        .location-data::before,
+        .location-data::after {
+          left: 65%;
+          transform: translate(-50%, -100%);
+          border-right: 20px solid transparent;
+          border-bottom: 20px solid var(--main-bg-color);
+          border-left: 20px solid transparent;
+          top: 0;
         }
         .location-data::after {
-          top: -15px;
-          left: 65%;
-          border-bottom: none;
-          border-top: 1px solid var(--main-bg-color);
+          top: 2px;
+          border-bottom: 20px solid #2b2f2b;
         }
       }
