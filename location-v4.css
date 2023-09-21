@@ -1,0 +1,239 @@
+      .map-container {
+        position: relative !important;
+      }
+      .location-data {
+        position: absolute;
+        right: 10%;
+        top: 24%;
+        padding: 35px 20px 20px;
+        border-radius: 4px;
+        opacity: 0.9;
+        color: #fff;
+        font-size: 20px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background: #292c29;
+        border: 1px solid var(--main-bg-color);
+        width: 450px;
+      }
+      .location-data::before,
+      .location-data::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-bottom: 20px solid transparent;
+        border-right: 20px solid var(--main-bg-color);
+        border-top: 20px solid transparent;
+        clear: both;
+      }
+      .location-data::before {
+        left: -19px;
+      }
+      .location-data::after {
+        left: -17px;
+        border-right: 20px solid #2b2f2b;
+      }
+      .btn {
+        padding: 6px;
+        margin: 4px;
+      }
+      .info-cross {
+        text-align: right;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 0px;
+      }
+      .info-title {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 400;
+        letter-spacing: 0;
+        margin: 0;
+      }
+      .info-description {
+        color: #fff;
+        font-size: 1em;
+        font-weight: 300;
+        letter-spacing: 0;
+      }
+      .map-div {
+        width: 100%;
+        height: 480px;
+      }
+      .info-navigation {
+        display: flex;
+        justify-content: space-between;
+        color: var(--main-bg-color);
+      }
+      .sec-loca-map-comp-1 button:nth-child(1) {
+        border-color: #5684b9;
+      }
+      .sec-loca-map-comp-1 button:nth-child(2) {
+        border-color: #c87474;
+      }
+      .sec-loca-map-comp-1 button:nth-child(3) {
+        border-color: #926dc1;
+      }
+      .sec-loca-map-comp-1 button:nth-child(4) {
+        border-color: #e7c28c;
+      }
+      .location-filter {
+        width: 100%;
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 0 2px rgb(204, 204, 204);
+        transition: all 0.5s ease;
+        position: relative;
+        color: #474747;
+        text-align: left;
+      }
+      .location-filter .location-select {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        padding: 18px 22px;
+      }
+      .location-filter .location-select > svg {
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        -ms-transition: -ms-transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
+      }
+      .location-filter .location-select > i {
+        color: #888;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        float: right;
+        line-height: 20px;
+      }
+      .location-filter:hover {
+        box-shadow: 0 0 4px rgb(204, 204, 204);
+      }
+      .location-filter:active {
+        background-color: #f8f8f8;
+      }
+      .location-filter.active:hover,
+      .location-filter.active {
+        box-shadow: 0 0 4px rgb(204, 204, 204);
+        border-radius: 2px 2px 0 0;
+        background-color: #f8f8f8;
+      }
+      .location-filter.active .location-select > svg {
+        transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+        -webkit-transform: rotate(-180deg);
+      }
+      .location-filter .location-menu {
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        left: 0;
+        margin-top: 1px;
+        box-shadow: 0 1px 2px rgb(204, 204, 204);
+        border-radius: 0 1px 2px 2px;
+        overflow: hidden;
+        display: none;
+        overflow-y: auto;
+        z-index: 9;
+      }
+      .location-filter .location-menu li {
+        padding: 10px;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+      }
+      .location-filter .location-menu {
+        padding: 0;
+        list-style: none;
+      }
+      .location-filter .location-menu li:active {
+        background-color: rgba(55, 56, 43, 0.9);
+      }
+      .location-menu li {
+        background-color: #37382b;
+        padding: 8px 4px;
+        display: flex;
+        gap: 16px;
+        color: #f2f2f2;
+        align-items: center;
+        border-bottom: 1.5px solid #5684b9;
+      }
+      .location-menu li:nth-child(2) {
+        border-color: #c87474;
+      }
+      .location-menu li:nth-child(3) {
+        border-color: #926dc1;
+      }
+      .location-menu li:nth-child(4) {
+        border-color: #e7c28c;
+      }
+      .info-image-div {
+        position: relative;
+      }
+      .info-image-div img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .owl-nav {
+        position: absolute;
+        top: 43%;
+        transform: translateY(-43%);
+        left: 5px;
+        right: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .owl-nav > * {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border-color: transparent !important;
+        background-color: #fff !important;
+        color: #000 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .owl-item-image-box {
+        height: 10rem;
+      }
+      @media screen and (max-width: 768px) {
+        .map-text-wrapper {
+          width: 54vw;
+          height: 32vw;
+          grid-column-gap: 6px;
+          grid-row-gap: 6px;
+          margin-bottom: 20px;
+          padding: 5vw 1vw 5vw 6vw;
+        }
+        .info-title {
+          font-size: 17px;
+        }
+        .info-description {
+          font-size: 13px;
+        }
+        .location-data {
+          height: fit-content;
+          background-position: top;
+          padding: 18px 20px 20px 20px;
+          top: 58%;
+          width: 231px;
+          opacity: 1;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          margin-bottom: 0;
+        }
+        .location-data::after {
+          top: -15px;
+          left: 65%;
+          border-bottom: none;
+          border-top: 1px solid var(--main-bg-color);
+        }
+      }
