@@ -47,6 +47,7 @@
         position: absolute;
         right: 10px;
         top: 0px;
+        padding: 10px;
       }
       .info-title {
         color: #fff;
@@ -77,7 +78,7 @@
         border-color: #c87474;
       }
       .sec-loca-map-comp-1 button:nth-child(3) {
-        border-color: #926dc1;
+        border-https://cdn.jsdelivr.net/gh/ucodesoftdev/novus@1.0.0/location-v4.csscolor: #926dc1;
       }
       .sec-loca-map-comp-1 button:nth-child(4) {
         border-color: #e7c28c;
