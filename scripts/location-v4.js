@@ -27,10 +27,52 @@
         }
         indexInfoWindow = 0;
         const section = document.querySelector(".location-map");
-        if (!section) {
+              const novusMapElement = document.querySelector(".sec-location-v4-5");
+            
+        if (!section || !novusMapElement) {
           console.error("Map container not found!");
           return;
         }
+            const novusMap = new google.maps.Map(novusMapElement, {
+    center: { lat: -37.8278719, lng: 144.9639754 },
+    zoom: 12,
+    styles: [
+      {
+        featureType: "road.highway",
+        elementType: "labels",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "road.local",
+        elementType: "labels",
+        stylers: [{ visibility: "off" }],
+      },
+      { featureType: "poi.business", stylers: [{ visibility: "off" }] },
+      {
+        featureType: "transit",
+        elementType: "labels.icon",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#f3d19c", visibility: false }],
+      },
+      {
+        featureType: "transit",
+        elementType: "geometry",
+        stylers: [{ color: "#647362", visibility: false }],
+      },
+      {
+        featureType: "transit.station",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563", visibility: false }],
+      },
+      { featureType: "administrative", stylers: [{ visibility: false }] },
+    ],
+  });
+
+  createNovusMarker(novusMap);
         const map = new google.maps.Map(section, {
           center: { lat: -37.8278719, lng: 144.9639754 },
           zoom: 16,
@@ -123,6 +165,8 @@
         callback(category, map, indexInfoWindow);
         service = new window.google.maps.places.PlacesService(map);
       }
+
+      
       function callback(category, map) {
         const colorCode = {
           art: "#5684b9",
@@ -197,6 +241,19 @@
         });
         return marker;
       }
+
+function createNovusMarker(map) {
+  if (!map) {
+    console.error("novus map not found");
+    return;
+  }
+  const novusMapElement = document.querySelector(".sec-location-v4-5");
+  new google.maps.Marker({
+    map,
+    position: { lat: -37.8278719, lng: 144.9639754 },
+    icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/650d79f81050740a9a964567_marker-novus.svg",
+  });
+}
 
       async function openInfoWindow(location, colorCode, markers) {
         const images = await getPlaceId(location.title);
