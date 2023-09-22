@@ -36,6 +36,7 @@
             const novusMap = new google.maps.Map(novusMapElement, {
     center: { lat: -37.8278719, lng: 144.9639754 },
     zoom: 12,
+    disableDefaultUI: true,
     styles: [
       {
         featureType: "road.highway",
