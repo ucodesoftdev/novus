@@ -253,6 +253,58 @@ function createNovusMarker(map) {
     position: { lat: -37.8278719, lng: 144.9639754 },
     icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/650d79f81050740a9a964567_marker-novus.svg",
   });
+
+      const infoWindow = document.createElement("div");
+  infoWindow.classList.add("novus-info-window");
+  infoWindow.innerHTML = `
+                          <div class="home-location">
+                            <div class="info">
+                              <h3>Location Details</h3>
+                              <p><strong>153 Sturt Street, Southbank VIC 3006</strong></p>
+                              <p>Suitably located within walking or cycling distance of all necessary amenities and the city centre</p>
+                              </div>
+                              <div class="distance">
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <td>Trams</td>
+                                    <td>Distance</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Miles St / Sturt St Tram Stop</td>
+                                    <td>0.09 km</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Grant St / Sturt St Tram Stop</td>
+                                    <td>0.22 km</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <td>Train / Metro</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Anzac Metro Station</td>
+                                    <td>1.00 km</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Flinders Street Station</td>
+                                    <td>1.30 km</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <button type="button" class="location-btn">Get Directions</button>
+                            </div>
+                          </div>
+                         `;
+  novusMapElement.parentNode.append(infoWindow);
 }
 
       async function openInfoWindow(location, colorCode, markers) {
