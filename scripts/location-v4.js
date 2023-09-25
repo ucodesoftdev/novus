@@ -33,8 +33,17 @@
           console.error("Map container not found!");
           return;
         }
+
+            let latLong = { lat: -37.8278719, lng: 144.9639754 };
+
+        if (window.screen.width > 1440) {
+          latLong.lng += 0.06;
+        }
+        if (window.screen.width >= 1351 && window.screen.width <= 1440) {
+          latLong.lng += 0.04;
+        }
             const novusMap = new google.maps.Map(novusMapElement, {
-    center: { lat: -37.8278719, lng: 144.9639754 + 0.05 },
+    center: latLong,
     zoom: 12,
     disableDefaultUI: true,
     mapId: '4e7898bbcab92cd0',
