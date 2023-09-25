@@ -37,6 +37,7 @@
     center: { lat: -37.8278719, lng: 144.9639754 },
     zoom: 12,
     disableDefaultUI: true,
+    mapId: '4e7898bbcab92cd0',
     styles: [
       {
         featureType: "road.highway",
