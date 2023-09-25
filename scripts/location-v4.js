@@ -44,7 +44,7 @@
         }
             const novusMap = new google.maps.Map(novusMapElement, {
     center: latLong,
-    zoom: 12,
+    zoom: 16,
     disableDefaultUI: true,
     mapId: '4e7898bbcab92cd0',
     styles: [
