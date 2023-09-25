@@ -34,13 +34,10 @@
           return;
         }
             const novusMap = new google.maps.Map(novusMapElement, {
-    center: { lat: -37.8278719, lng: 144.9639754 },
+    center: { lat: -37.8278719, lng: 144.9639754 + 0.05 },
     zoom: 12,
     disableDefaultUI: true,
     mapId: '4e7898bbcab92cd0',
-                  zoomControlOptions: {
-      position: google.maps.ControlPosition.LEFT_CENTER,
-    },
     styles: [
       {
         featureType: "road.highway",
@@ -238,7 +235,7 @@
         });
         bounds.extend(marker.position);
         google.maps.event.addListener(marker, "click", () => {
-          for (let i = 0; i < markers.length; i++) {
+          for (let i = 0; i < markers.length; i++) { 0.003
             markers[i].marker.setIcon(icons[markers[i].type].default);
           }
           marker.setIcon(icons[place.type].active);
