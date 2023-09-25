@@ -242,26 +242,31 @@
         }
       }
  .novus-info-window {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: #fff;
-        height: fit-content;
-        max-width: 713px;
-        width: 90%;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
+         position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    height: fit-content;
+    max-width: 835px;
+    width: 90%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
       }
       .home-location {
-        padding: 1rem;
-        gap: 3rem;
-        position: relative;
-      }
+    padding: 1rem;
+    gap: 1rem;
+    position: relative;
+}
       .info h3 {
-        margin: 0 0 1.5rem;
-        font-size: 1.5rem;
-      }
+    margin: 0;
+    font-size: 1.5rem;
+}
+.info p {
+    letter-spacing: 0;
+    font-size: 14px;
+}
+
       .distance {
         flex: 1 1 0%;
       }
@@ -278,30 +283,47 @@
         font-weight: 600;
         padding-bottom: 20px;
       }
-      .location-btn {
-        border: 1px solid #000;
-        padding: 1rem 1.5rem;
-        box-shadow: none;
-        text-transform: uppercase;
-        background-color: #fff;
-        display: block;
-        width: 100%;
-      }
+.distance table tr > td:last-child {
+    text-align: right;
+}
+
+.distance table tbody > tr > td {
+   font-size: 14px;
+}
+      
+.location-btn {
+    color: #2c2c22;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #2c2c22;
+    padding: 16px 40px;
+    font-family: Lato, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 100%;
+    transition: all .3s;
+}
       @media (min-width: 768px) {
       .location-btn {
           display: inline-block;
           width: auto;
         }
         .home-location {
-          display: flex;
-          padding: 3rem;
-        }
+    display: flex;
+    padding: 60px;
+}
         .info {
-          width: 15rem;
-        }
-        .info h3 {
-          font-size: 2.5rem;
-        }
+    width: 15.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.info h3 {
+    font-size: 3rem;
+    letter-spacing: -2px;
+    line-height: 110%;
+}
         .novus-info-window {
           right: 60px;
           margin-left: auto;
