@@ -302,7 +302,7 @@ function createNovusMarker(map) {
                                 </tbody>
                               </table>
 
-                              <button type="button" class="location-btn">Get Directions</button>
+                              <button type="button" onclick="window.open(`https://www.google.com/maps/dir/?api=1&destination=153 Sturt Street, Southbank VIC 3006`, '_blank')" class="location-btn">Get Directions</button>
                             </div>
                           </div>
                          `;
