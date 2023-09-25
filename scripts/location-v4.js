@@ -140,7 +140,7 @@
               featureType: "transit.station",
               elementType: "labels.text.fill",
               stylers: [{ color: "#d59563", visibility: false }],
-            },153 Sturt Street, Southbank VIC 3006153 Sturt Street, Southbank VIC 3006
+            },
             {
               featureType: "water",
               elementType: "geometry",
