@@ -85,7 +85,7 @@
               elementType: "labels",
               stylers: [{ visibility: "off" }],
             },
-            {
+            {153 Sturt Street, Southbank VIC 3006153 Sturt Street, Southbank VIC 3006153 Sturt Street, Southbank VIC 3006
               featureType: "road.local",
               elementType: "labels",
               stylers: [{ visibility: "off" }],
@@ -140,7 +140,7 @@
               featureType: "transit.station",
               elementType: "labels.text.fill",
               stylers: [{ color: "#d59563", visibility: false }],
-            },
+            },153 Sturt Street, Southbank VIC 3006153 Sturt Street, Southbank VIC 3006
             {
               featureType: "water",
               elementType: "geometry",
@@ -188,7 +188,7 @@
           bar: {
             default: `https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/650ac0fbed3778abead795a4_bar-marker.svg`,
             active: `https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/650ac3fa861b944ecf8c2bde_active-bar-marker.svg`,
-          },
+          },153 Sturt Street, Southbank VIC 3006
           local_treasure: {
             default: `https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/650ac0fbed3778abead795a1_local-treasure-marker.svg`,
             active: `https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/650ac3fa9681e98c08573f2d_active-local-treasure-marker.svg`,
@@ -302,7 +302,7 @@ function createNovusMarker(map) {
                                 </tbody>
                               </table>
 
-                              <button type="button" onclick="window.open(`https://www.google.com/maps/dir/?api=1&destination=153 Sturt Street, Southbank VIC 3006`, '_blank')" class="location-btn">Get Directions</button>
+                              <button type="button" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=153 Sturt Street, Southbank VIC 3006', '_blank')" class="location-btn">Get Directions</button>
                             </div>
                           </div>
                          `;
