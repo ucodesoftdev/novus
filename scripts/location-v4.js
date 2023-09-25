@@ -85,7 +85,7 @@
               elementType: "labels",
               stylers: [{ visibility: "off" }],
             },
-            {153 Sturt Street, Southbank VIC 3006153 Sturt Street, Southbank VIC 3006153 Sturt Street, Southbank VIC 3006
+            {
               featureType: "road.local",
               elementType: "labels",
               stylers: [{ visibility: "off" }],
