@@ -38,6 +38,9 @@
     zoom: 12,
     disableDefaultUI: true,
     mapId: '4e7898bbcab92cd0',
+                  zoomControlOptions: {
+      position: google.maps.ControlPosition.LEFT_CENTER,
+    },
     styles: [
       {
         featureType: "road.highway",
