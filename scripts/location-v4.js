@@ -1,4 +1,4 @@
-
+const data="khjlj";
       $(document).ready(function () {
         $(".location-filter").click(function () {
           $(this).attr("tabindex", 1).focus();
