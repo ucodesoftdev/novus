@@ -9,7 +9,6 @@
           $(this).find(".location-menu").slideUp(300);
         });
       });
-      const latlng = { lat: -37.8278719, lng: 144.9639754 };
       function initMap(event, category = null) {
         const buttons = document.querySelectorAll(".sec-loca-map-comp-button");
         const list = document.querySelectorAll(".location-menu li");
@@ -84,7 +83,7 @@
 
   createNovusMarker(novusMap);
         const map = new google.maps.Map(section, {
-          center: { lat: -37.8278719, lng: 144.9639754 },
+          center: { lat: -37.8278762, lng: 144.9639754 },
           zoom: 16,
           disableDefaultUI: true,
           styles: [
