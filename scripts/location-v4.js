@@ -45,40 +45,6 @@ function initMap(event, category = null) {
     zoom: 13.5,
     disableDefaultUI: true,
     mapId: "4e7898bbcab92cd0",
-    styles: [
-      {
-        featureType: "road.highway",
-        elementType: "labels",
-        stylers: [{ visibility: "off" }],
-      },
-      {
-        featureType: "road.local",
-        elementType: "labels",
-        stylers: [{ visibility: "off" }],
-      },
-      { featureType: "poi.business", stylers: [{ visibility: "off" }] },
-      {
-        featureType: "transit",
-        elementType: "labels.icon",
-        stylers: [{ visibility: "off" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#f3d19c", visibility: false }],
-      },
-      {
-        featureType: "transit",
-        elementType: "geometry",
-        stylers: [{ color: "#647362", visibility: false }],
-      },
-      {
-        featureType: "transit.station",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563", visibility: false }],
-      },
-      { featureType: "administrative", stylers: [{ visibility: false }] },
-    ],
   });
 
   createNovusMarker(novusMap);
