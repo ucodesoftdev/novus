@@ -175,7 +175,7 @@ function initMap(event, category = null) {
   service = new window.google.maps.places.PlacesService(map);
 }
 
-function callback(category, map) {
+async function callback(category, map) {
   const colorCode = {
     art: "#5684b9",
     cafe: "#c87474",
@@ -217,7 +217,7 @@ function callback(category, map) {
   const markers = [];
   bounds.extend(defaultMarker.position);
   for (let i = 0; i < results.length; i++) {
-    const marker = createMarker(
+    const marker = await createMarker(
       results[i],
       map,
       bounds,
@@ -233,16 +233,16 @@ function callback(category, map) {
   }
   map.fitBounds(bounds);
 }
-function createMarker(place, map, bounds, markers, colorCode, icons) {
+async function createMarker(place, map, bounds, markers, colorCode, icons) {
   const marker = new google.maps.Marker({
     map,
-    position: { lat: place.lat, lng: place.lng },
+    position: await getLatLong(`${place.title} ${place.address}`),
     icon: icons[place.type].default,
   });
+
   bounds.extend(marker.position);
   google.maps.event.addListener(marker, "click", () => {
     for (let i = 0; i < markers.length; i++) {
-      0.003;
       markers[i].marker.setIcon(icons[markers[i].type].default);
     }
     marker.setIcon(icons[place.type].active);
@@ -317,7 +317,7 @@ function createNovusMarker(map) {
 }
 
 async function openInfoWindow(location, colorCode, markers) {
-  const images = await getPlaceId(location.title);
+  const images = await getPlaceId(`${location.title} ${location.address}`);
   const locationMap = document.querySelector(".location-map");
   let infoDiv = document.querySelector(".location-data");
   let infoTitle = document.querySelector(".info-title");
@@ -427,11 +427,10 @@ async function openInfoWindow(location, colorCode, markers) {
 }
 async function getPlaceId(address) {
   try {
-    console.log({ address });
     const geocoder = new google.maps.Geocoder();
     const { results } = await geocoder.geocode({ address: address });
     if (!results || !results.length || !results[0].place_id) {
-      console.info("Place Id doesn't find");
+      console.info("Address not found");
       return null;
     }
     return new Promise((resolve, reject) => {
@@ -452,6 +451,25 @@ async function getPlaceId(address) {
         }
       });
     });
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+async function getLatLong(address) {
+  try {
+    const geocoder = new google.maps.Geocoder();
+    const { results } = await geocoder.geocode({ address: address });
+    if (!results || !results.length) {
+      console.info("Address not found");
+      return null;
+    }
+
+    return {
+      lat: results[0]?.geometry?.location.lat(),
+      lng: results[0]?.geometry?.location.lng(),
+    };
   } catch (error) {
     console.error(error);
     return null;
