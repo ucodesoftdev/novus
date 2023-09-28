@@ -193,7 +193,7 @@ async function callback(category, map) {
     );
     markers.push({ marker, type: results[i].type });
     if (i === 0 && markers[0]) {
-      openInfoWindow(results[i], colorCode, markers);
+      await openInfoWindow(results[i], colorCode, markers);
       markers[0].marker.setIcon(icons[results[i].type].active);
     }
   }
@@ -212,7 +212,7 @@ async function createMarker(place, map, bounds, markers, colorCode, icons) {
       markers[i].marker.setIcon(icons[markers[i].type].default);
     }
     marker.setIcon(icons[place.type].active);
-    openInfoWindow(place, colorCode, markers);
+    await openInfoWindow(place, colorCode, markers);
   });
   return marker;
 }
