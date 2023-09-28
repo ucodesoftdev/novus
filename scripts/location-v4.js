@@ -9,7 +9,7 @@
           $(this).find(".location-menu").slideUp(300);
         });
       });
-       const novusLatLng = { lat: -37.8277835, lng: 144.9660537 };
+       const novusLatLng = { lat: -37.8278762, lng: 144.9665503 };
       function initMap(event, category = null) {
         const buttons = document.querySelectorAll(".sec-loca-map-comp-button");
         const list = document.querySelectorAll(".location-menu li");
