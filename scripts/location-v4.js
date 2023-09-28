@@ -9,6 +9,7 @@
           $(this).find(".location-menu").slideUp(300);
         });
       });
+       const novusLatLng = { lat: -37.8276538, lng: 144.966325 };
       function initMap(event, category = null) {
         const buttons = document.querySelectorAll(".sec-loca-map-comp-button");
         const list = document.querySelectorAll(".location-menu li");
@@ -32,7 +33,7 @@
           return;
         }
 
-            let latLong = { lat: -37.8278762, lng: 144.9639754 };
+            let latLong = novusLatLng;
 
         if (window.screen.width > 1440) {
           latLong.lng += 0.06;
@@ -83,7 +84,7 @@
 
   createNovusMarker(novusMap);
         const map = new google.maps.Map(section, {
-          center: { lat: -37.8278762, lng: 144.9639754 },
+          center: novusLatLng,
           zoom: 16,
           disableDefaultUI: true,
           styles: [
@@ -212,11 +213,11 @@
         }
         const defaultMarker = new google.maps.Marker({
           map,
-          position: { lat: -37.8278762, lng: 144.9639754 },
+          position: novusLatLng,
           icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/65082b1e3487e4f9f004f556_location-marker.svg",
         });
         const markers = [];
-        //bounds.extend(defaultMarker.position);
+        bounds.extend(defaultMarker.position);
         for (let i = 0; i < results.length; i++) {
           const marker = createMarker(
             results[i],
@@ -259,7 +260,7 @@ function createNovusMarker(map) {
   const novusMapElement = document.querySelector(".sec-location-v4-5");
   new google.maps.Marker({
     map,
-    position: { lat: -37.8278762, lng: 144.9639754 },
+    position: novusLatLng,
     icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/65082b1e3487e4f9f004f556_location-marker.svg",
   });
 
