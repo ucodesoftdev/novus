@@ -32,7 +32,7 @@
           return;
         }
 
-            let latLong = { lat: -37.8278719, lng: 144.9639754 };
+            let latLong = { lat: -37.8278762, lng: 144.9639754 };
 
         if (window.screen.width > 1440) {
           latLong.lng += 0.06;
@@ -212,7 +212,7 @@
         }
         const defaultMarker = new google.maps.Marker({
           map,
-          position: { lat: -37.8278719, lng: 144.9639754 },
+          position: { lat: -37.8278762, lng: 144.9639754 },
           icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/65082b1e3487e4f9f004f556_location-marker.svg",
         });
         const markers = [];
@@ -259,7 +259,7 @@ function createNovusMarker(map) {
   const novusMapElement = document.querySelector(".sec-location-v4-5");
   new google.maps.Marker({
     map,
-    position: { lat: -37.8278719, lng: 144.9639754 },
+    position: { lat: -37.8278762, lng: 144.9639754 },
     icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/65082b1e3487e4f9f004f556_location-marker.svg",
   });
 
