@@ -1,4 +1,3 @@
-const data="khjlj";
       $(document).ready(function () {
         $(".location-filter").click(function () {
           $(this).attr("tabindex", 1).focus();
@@ -218,7 +217,7 @@ const data="khjlj";
           icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/65082b1e3487e4f9f004f556_location-marker.svg",
         });
         const markers = [];
-        bounds.extend(defaultMarker.position);
+        //bounds.extend(defaultMarker.position);
         for (let i = 0; i < results.length; i++) {
           const marker = createMarker(
             results[i],
@@ -234,7 +233,7 @@ const data="khjlj";
             markers[0].marker.setIcon(icons[results[i].type].active);
           }
         }
-        map.fitBounds(bounds);
+       map.fitBounds(bounds);
       }
       function createMarker(place, map, bounds, markers, colorCode, icons) {
         const marker = new google.maps.Marker({
