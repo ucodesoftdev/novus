@@ -308,12 +308,12 @@
   }
   .location-data {
     opacity: 1;
-    top: 5px;
-    left: 0;
+    top: 8px;
+    left: 50%;
     right: 0;
-    margin: auto 15px;
-    transform: translateY(0px);
+    transform: translate(-50%, 0);
     bottom: auto;
+    width: 100%;
   }
   .location-data::before,
   .location-data::after {
