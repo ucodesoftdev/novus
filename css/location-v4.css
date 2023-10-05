@@ -215,6 +215,12 @@
   .info-title {
     font-size: 17px;
   }
+  .info p {
+    margin-top:20px;
+  }
+  .distance{
+    margin-top:40px;
+  }
   .info-description {
     font-size: 13px;
   }
@@ -289,7 +295,6 @@
 
 .distance table tbody > tr > td {
   font-size: 14px;
-  color: #666;
 }
 
 .location-btn {
