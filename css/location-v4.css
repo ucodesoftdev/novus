@@ -232,7 +232,7 @@
     background-color: rgba(246, 246, 246, 1);
 }
 .home-location {
-  padding: 1rem;
+  padding: 2.5rem 1.2rem;
   gap: 1rem;
   position: relative;
 }
@@ -267,6 +267,7 @@
 
 .distance table tbody > tr > td {
   font-size: 14px;
+  color:#000;
 }
 
 .location-btn {
