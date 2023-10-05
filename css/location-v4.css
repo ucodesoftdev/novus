@@ -239,11 +239,12 @@
 .info h3 {
   margin: 0;
   font-size: 1.5rem;
-  letter-spacing: 0;
+  letter-spacing: 0.5px;
 }
 .info p {
   letter-spacing: 0;
   font-size: 14px;
+  font-weight:400;
 }
 .distance {
   flex: 1 1 0%;
@@ -268,6 +269,7 @@
 .distance table tbody > tr > td {
   font-size: 14px;
   color:#000;
+  font-weight:400;
 }
 
 .location-btn {
@@ -304,6 +306,7 @@
     margin-top:20px;
     font-weight:400;
     color:#000;
+    letter-spacing:0.5px;
   }
   .distance{
     margin-top:40px;
