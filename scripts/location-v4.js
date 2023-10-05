@@ -40,6 +40,9 @@ function initMap(event, category = null) {
   if (window.screen.width >= 1351 && window.screen.width <= 1440) {
     latLong.lng += 0.04;
   }
+  if (window.screen.width < 768) {
+    latLong.lat -= 0.03;
+  }
   const novusMap = new google.maps.Map(novusMapElement, {
     center: latLong,
     zoom: 13.5,
@@ -198,6 +201,9 @@ async function callback(category, map) {
     }
   }
   map.fitBounds(bounds);
+  if (window.screen.width <= 768) {
+    map.panBy(0, window.innerHeight / -3);
+  }
 }
 async function createMarker(place, map, bounds, markers, colorCode, icons) {
   const marker = new google.maps.Marker({
