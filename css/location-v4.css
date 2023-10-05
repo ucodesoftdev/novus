@@ -336,7 +336,7 @@
   .home-location::after {
     border-top: none;
     border-left: 35px solid transparent;
-    border-bottom: 35px solid #fff;
+    border-bottom: 35px solid rgba(246, 246, 246, 1);
     border-right: 35px solid transparent;
     left: 60%;
     top: 0;
