@@ -202,7 +202,7 @@ async function callback(category, map) {
   }
   map.fitBounds(bounds);
   if (window.screen.width <= 768) {
-     map.panBy(0, document.querySelector(".location-map").clientHeight / -3);
+     map.panBy(0, document.querySelector(".map-container").clientHeight / -3);
   }
 }
 async function createMarker(place, map, bounds, markers, colorCode, icons) {
