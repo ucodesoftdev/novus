@@ -140,11 +140,11 @@ function initMap(event, category = null) {
       },
     ],
   });
-  callback(category, map, indexInfoWindow);
+  callback(category, map, novusMap);
   service = new window.google.maps.places.PlacesService(map);
 }
 
-async function callback(category, map) {
+async function callback(category, map, novusMap) {
   const colorCode = {
     art: "#5684b9",
     cafe: "#c87474",
@@ -203,6 +203,10 @@ async function callback(category, map) {
   map.fitBounds(bounds);
   if (window.screen.width <= 768) {
      map.panBy(0, document.querySelector(".map-container").clientHeight / -3);
+    novusMap.panBy(
+    0,
+    document.querySelector(".sec-location-v4-5").clientHeight / 2.5
+  );
   }
 }
 async function createMarker(place, map, bounds, markers, colorCode, icons) {
