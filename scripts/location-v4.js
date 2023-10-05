@@ -233,7 +233,7 @@ function createNovusMarker(map) {
   new google.maps.Marker({
     map,
     position: { lat: -37.8278762, lng: 144.9665503 },
-    icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/651e4358bff21d27db668e12_location-marker-darker.svg",
+    icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/651e88d5a20c548195874c45_location-marker-darker.svg",
   });
 
   const infoWindow = document.createElement("div");
