@@ -205,7 +205,7 @@ async function callback(category, map, novusMap) {
      map.panBy(0, document.querySelector(".map-container").clientHeight / -3);
     novusMap.panBy(
     0,
-    document.querySelector(".sec-location-v4-5").clientHeight / 2.5
+    document.querySelector(".sec-location-v4-5").clientHeight / 2
   );
   }
 }
