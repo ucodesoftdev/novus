@@ -243,16 +243,15 @@
   }
 }
 .novus-info-window {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #fff;
-  height: fit-content;
-  max-width: 835px;
-  width: 90%;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
+    position: absolute;
+    top: 50%;
+    height: fit-content;
+    max-width: 835px;
+    width: 90%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    background-color: rgba(246, 246, 246, 1);
 }
 .home-location {
   padding: 1rem;
