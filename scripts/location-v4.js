@@ -198,7 +198,7 @@ async function callback(category, map, novusMap) {
     }
   }
   map.fitBounds(bounds);
-  if (window.screen.width <= 768) {
+  if (window.screen.width <= 1024) {
      map.panBy(0, document.querySelector(".map-container").clientHeight / -3);
     novusMap.panBy(
     0,
