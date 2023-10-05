@@ -84,7 +84,7 @@
   border-color: #e7c28c;
 }
 .sec-loca-map-comp-1 button:hover{
-  background-color: rgba(115, 120, 89, 0.5);
+  background-color: rgba(115, 120, 89, 0.5) !important;
 }
 .location-filter {
   width: 100%;
@@ -343,10 +343,10 @@
     transform: translate(-50%, -100%);
   }
   .novus-info-window{
-    bottom:0;
-    top:auto;
-    left:50;
-    transform: translate(0, -50%);
+    bottom: 0;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 }
 
