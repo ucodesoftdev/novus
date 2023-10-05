@@ -40,9 +40,6 @@ function initMap(event, category = null) {
   if (window.screen.width >= 1351 && window.screen.width <= 1440) {
     latLong.lng += 0.04;
   }
-  if (window.screen.width < 768) {
-    latLong.lat -= 0.03;
-  }
   const novusMap = new google.maps.Map(novusMapElement, {
     center: latLong,
     zoom: 13.5,
@@ -205,7 +202,7 @@ async function callback(category, map, novusMap) {
      map.panBy(0, document.querySelector(".map-container").clientHeight / -3);
     novusMap.panBy(
     0,
-    document.querySelector(".sec-location-v4-5").clientHeight / 3.5
+    document.querySelector(".sec-location-v4-5").clientHeight / 2.5
   );
   }
 }
