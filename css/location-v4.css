@@ -317,7 +317,7 @@
     right: 0;
     transform: translate(-50%, 0);
     bottom: auto;
-    width: 100%;
+    width: 95%;
   }
   .location-data::before,
   .location-data::after {
