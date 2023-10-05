@@ -284,10 +284,16 @@
   font-weight: 400;
   line-height: 100%;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .location-btn:hover {
   opacity: 0.5;
+}
+.location-btn img {
+    margin-right: 10px;
+    height: 19px;
 }
 
 @media screen and (max-width: 1024px) {
