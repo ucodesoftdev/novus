@@ -288,7 +288,7 @@
   opacity: 0.5;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .map-text-wrapper {
     width: 54vw;
     height: 32vw;
