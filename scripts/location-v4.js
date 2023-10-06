@@ -40,6 +40,9 @@ function initMap(event, category = null) {
   if (window.screen.width >= 1351 && window.screen.width <= 1440) {
     latLong.lng += 0.04;
   }
+  if (window.screen.width < 1024) {
+    latLong.lat -= 0.02;
+  }
   const novusMap = new google.maps.Map(novusMapElement, {
     center: latLong,
     zoom: 13.5,
