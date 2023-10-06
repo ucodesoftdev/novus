@@ -54,7 +54,7 @@
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0;
-  margin: 18px 0 3px 0;
+  margin: 18px 0;
   text-align: center;
 }
 .info-description {
@@ -340,15 +340,14 @@
   .location-data::after {
     left: 50%;
     transform: translate(-50%, 100%);
-    border-right: 20px solid transparent;
-    border-top: 20px solid var(--main-bg-color);
-    border-left: 20px solid transparent;
-    bottom: -1px;
+    border-right: 30px solid transparent;
+    border-top: 30px solid var(--main-bg-color);
+    border-left: 30px solid transparent;
     top: auto;
   }
   .location-data::after {
-    bottom: 1px;
-    border-top: 20px solid #2b2f2b;
+    bottom: 3px;
+    border-top: 30px solid #2b2f2b;
   }
   .home-location::after {
     border-top: none;
