@@ -5,7 +5,7 @@
   position: absolute;
   right: 4%;
   top: 50%;
-  padding: 35px 20px 20px;
+  padding: 0;
   border-radius: 4px;
   color: #fff;
   font-size: 20px;
@@ -13,7 +13,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background: rgba(41, 44, 41, 0.9);
-  border: 1px solid var(--main-bg-color);
+  border: 3px solid var(--main-bg-color);
   max-width: 450px;
   transform: translateY(-50%);
 }
@@ -21,21 +21,21 @@
 .location-data::after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%);
   width: 0;
   height: 0;
-  border-bottom: 20px solid transparent;
-  border-right: 20px solid var(--main-bg-color);
-  border-top: 20px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid var(--main-bg-color);
+  border-top: 30px solid transparent;
   clear: both;
 }
 .location-data::before {
-  left: -19px;
+  left: -32px;
 }
 .location-data::after {
-  left: -17px;
-  border-right: 20px solid #2b2f2b;
+  left: -28px;
+  border-right: 30px solid #2b2f2b;
 }
 .btn {
   padding: 6px;
@@ -51,14 +51,15 @@
 }
 .info-title {
   color: #fff;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 400;
   letter-spacing: 0;
-  margin: 0;
+  margin: 18px 0 3px 0;
+  text-align: center;
 }
 .info-description {
   color: #fff;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0;
 }
@@ -69,7 +70,9 @@
 .info-navigation {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: var(--main-bg-color);
+  gap: 1rem;
 }
 .sec-loca-map-comp-1 button:nth-child(1) {
   border-color: #5684b9;
@@ -83,7 +86,7 @@
 .sec-loca-map-comp-1 button:nth-child(4) {
   border-color: #e7c28c;
 }
-.sec-loca-map-comp-1 button:hover{
+.sec-loca-map-comp-1 button:hover {
   background-color: rgba(115, 120, 89, 0.5) !important;
 }
 .location-filter {
@@ -175,13 +178,16 @@
 .location-menu li:nth-child(4) {
   border-color: #e7c28c;
 }
-.info-image-div {
+.image-div {
   position: relative;
 }
 .info-image-div img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+[class^="nav-"] {
+  flex: none;
 }
 .owl-nav {
   position: absolute;
@@ -207,29 +213,29 @@
   height: 10rem;
 }
 .home-location::after {
-    width: 0;
-    height: 0;
-    border-top: 35px solid transparent;
-    border-right: 35px solid rgba(246, 246, 246, 1);
-    border-bottom: 35px solid transparent;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-100%, -100%);
-  }
+  width: 0;
+  height: 0;
+  border-top: 35px solid transparent;
+  border-right: 35px solid rgba(246, 246, 246, 1);
+  border-bottom: 35px solid transparent;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -100%);
+}
 .novus-info-window {
-    position: absolute;
-    height: fit-content;
-    max-width: 835px;
-    width: 90%;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top:50%;
-    transform: translateY(-50%);
-    background-color: rgba(246, 246, 246, 1);
+  position: absolute;
+  height: fit-content;
+  max-width: 835px;
+  width: 90%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(246, 246, 246, 1);
 }
 .home-location {
   padding: 2.5rem 1.2rem;
@@ -244,7 +250,7 @@
 .info p {
   letter-spacing: 0;
   font-size: 14px;
-  font-weight:400;
+  font-weight: 400;
 }
 .distance {
   flex: 1 1 0%;
@@ -268,8 +274,8 @@
 
 .distance table tbody > tr > td {
   font-size: 14px;
-  color:#000;
-  font-weight:400;
+  color: #000;
+  font-weight: 400;
 }
 
 .location-btn {
@@ -292,8 +298,12 @@
   opacity: 0.5;
 }
 .location-btn img {
-    margin-right: 10px;
-    height: 19px;
+  margin-right: 10px;
+  height: 19px;
+}
+
+.info-heading {
+  padding: 0 20px 15px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -305,17 +315,14 @@
     margin-bottom: 20px;
     padding: 5vw 1vw 5vw 6vw;
   }
-  .info-title {
-    font-size: 17px;
-  }
   .info p {
-    margin-top:20px;
-    font-weight:400;
-    color:#000;
-    letter-spacing:0.5px;
+    margin-top: 20px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 0.5px;
   }
-  .distance{
-    margin-top:40px;
+  .distance {
+    margin-top: 40px;
   }
   .info-description {
     font-size: 13px;
@@ -352,7 +359,7 @@
     top: 1px;
     transform: translate(-50%, -100%);
   }
-  .novus-info-window{
+  .novus-info-window {
     bottom: 0;
     top: auto;
     left: 50%;
