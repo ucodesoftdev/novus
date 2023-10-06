@@ -371,7 +371,7 @@ const openInfoWindow = async (location, colorCode, markers, place_id) => {
       new google.maps.event.trigger(markers[indexInfoWindow].marker, "click");
     };
   }
-  getOwlCarousel($(".owl-carousel"));
+  getOwlCarousel($(".owl-carousel"), colorCode[location.type]);
 };
 
 async function getPlaceId(place_id) {
@@ -420,7 +420,7 @@ async function getLatLong(address) {
   }
 }
 
-function getOwlCarousel(element) {
+function getOwlCarousel(element, color="#eec485") {
   if (!element) {
     console.log("carousel element not found");
     return;
@@ -436,8 +436,8 @@ function getOwlCarousel(element) {
       },
     },
     navText: [
-      `<svg style="width:20px; height:20px" class="w-64 h-64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="#eec485" stroke-width="2" points="7 2 17 12 7 22" transform="matrix(-1 0 0 1 24 0)"></polyline></svg>`,
-      `<svg style="width:20px; height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff"><polyline fill="none" stroke="#eec485" stroke-width="2" points="7 2 17 12 7 22"></polyline></svg>`,
+      `<svg style="width:20px; height:20px" class="w-64 h-64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="${color}" stroke-width="2" points="7 2 17 12 7 22" transform="matrix(-1 0 0 1 24 0)"></polyline></svg>`,
+      `<svg style="width:20px; height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff"><polyline fill="none" stroke="${color}" stroke-width="2" points="7 2 17 12 7 22"></polyline></svg>`,
     ],
   });
 }
