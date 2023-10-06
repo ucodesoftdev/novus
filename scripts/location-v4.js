@@ -411,7 +411,7 @@ async function openInfoWindow(location, colorCode, markers, place_id) {
     ],
   });
 }
-async function getPlaceId(address) {
+async function getPlaceId(place_id) {
   try {
     if (!place_id) {
       console.info("Address not found");
@@ -437,7 +437,7 @@ async function getPlaceId(address) {
     });
   } catch (error) {
     console.error(error);
-    return null;
+    return [];
   }
 }
 
