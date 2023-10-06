@@ -302,80 +302,52 @@ function createNovusMarker(map) {
   novusMapElement.parentNode.append(infoWindow);
 }
 
-async function openInfoWindow(location, colorCode, markers, place_id) {
-  const images = await getPlaceId(place_id);
+const openInfoWindow = async (location, colorCode, markers, place_id) => {
   const locationMap = document.querySelector(".location-map");
-  let infoDiv = document.querySelector(".location-data");
-  let infoTitle = document.querySelector(".info-title");
-  let infoDescription = document.querySelector(".info-description");
-  let infoCross = document.querySelector(".info-cross");
-  let infoNavigation = document.querySelector(".info-navigation");
-  let infoImageDiv = document.querySelector(".info-image-div");
   let owlContainer = document.querySelector(".owl-carousel");
+  let infoDiv = document.querySelector(".location-data");
+
   if (!locationMap) {
     console.error("Map container not found");
+    return;
   }
-  if (owlContainer) {
-    owlContainer.parentNode.removeChild(owlContainer);
-  }
-  owlContainer = document.createElement("div");
-  if (
-    !infoDescription &&
-    !infoTitle &&
-    !infoDiv &&
-    !infoCross &&
-    !infoNavigation &&
-    !infoImageDiv
-  ) {
-    infoImageDiv = document.createElement("div");
-    owlContainer = document.createElement("div");
-    owlContainer.classList.add("owl-carousel");
-
-    infoTitle = document.createElement("h2");
-    infoDescription = document.createElement("p");
+  if (!infoDiv) {
     infoDiv = document.createElement("div");
-    infoCross = document.createElement("div");
-    infoNavigation = document.createElement("div");
-    infoImageDiv = document.createElement("div");
-    infoImageDiv.classList.add("info-image-div");
-
-    infoNavigation.innerHTML = `<svg class="nav-prev" style="height:23px;width:23px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="currentColor" stroke-width="2" points="7 2 17 12 7 22" transform="matrix(-1 0 0 1 24 0)"></polyline></svg><svg class="nav-next" style="height:23px;width:23px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="currentColor" stroke-width="2" points="7 2 17 12 7 22"></polyline></svg>`;
-    infoNavigation.classList.add("info-navigation");
-    infoNavigation.classList.add("prev_next");
-    infoDescription.style.marginTop = "10px";
-    infoTitle.classList.add("info-title");
-    infoDescription.classList.add("info-description");
-    infoDiv.classList.add("location-data");
-    infoCross.classList.add("info-cross");
-    infoCross.addEventListener("click", () => {
-      locationMap.parentNode.removeChild(infoDiv);
-    });
   }
-  owlContainer.innerHTML = "";
-  owlContainer.className = "";
-  owlContainer.classList.add("owl-carousel");
+
+  infoDiv.classList.add("location-data");
+
+  const images = await getPlaceId(place_id);
+
+  owlContainer = "";
+
   images.forEach((image) => {
-    const imageDiv = document.createElement("div");
-    imageDiv.classList.add("owl-item-image-box");
-    imageDiv.classList.add("item");
-    const imageEl = document.createElement("img");
-    imageEl.src = image;
-    imageDiv.append(imageEl);
-    owlContainer.append(imageDiv);
+    owlContainer += `
+      <div class="owl-item-image-box item">
+        <img src=${image}/>
+      </div>
+    `;
   });
-  infoImageDiv.append(owlContainer);
+
+  infoDiv.innerHTML = `
+    <div class="info-image-div">
+      <div class="owl-carousel">
+        ${owlContainer}
+      </div>
+    </div>
+    <div class="info-heading">
+      <h3 class="info-title">${location.title}</h3>
+      <div class="info-navigation prev_next">
+        <svg class="nav-prev" style="height:23px;width:23px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="currentColor" stroke-width="2" points="7 2 17 12 7 22" transform="matrix(-1 0 0 1 24 0)"></polyline></svg>
+        <p class="info-description">${location.address}</p>
+        <svg class="nav-next" style="height:23px;width:23px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="currentColor" stroke-width="2" points="7 2 17 12 7 22"></polyline></svg>
+      </div>
+    </div>
+  `;
+
   infoDiv.style.setProperty("--main-bg-color", colorCode[location.type]);
-  infoTitle.textContent = location.title;
-  infoDescription.textContent = location.address;
-  infoCross.innerHTML = `<svg style="height:15px;width:15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path></svg>`;
-  infoDiv.append(
-    infoCross,
-    infoImageDiv,
-    infoTitle,
-    infoDescription,
-    infoNavigation
-  );
   locationMap.parentNode.insertBefore(infoDiv, locationMap.nextSibling);
+
   const navNext = document.querySelector(".nav-next");
   const navPrev = document.querySelector(".nav-prev");
   if (navNext && navPrev) {
@@ -396,21 +368,9 @@ async function openInfoWindow(location, colorCode, markers, place_id) {
       new google.maps.event.trigger(markers[indexInfoWindow].marker, "click");
     };
   }
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-    },
-    navText: [
-      `<svg style="width:20px; height:20px" class="w-64 h-64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polyline fill="none" stroke="#eec485" stroke-width="2" points="7 2 17 12 7 22" transform="matrix(-1 0 0 1 24 0)"></polyline></svg>`,
-      `<svg style="width:20px; height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff"><polyline fill="none" stroke="#eec485" stroke-width="2" points="7 2 17 12 7 22"></polyline></svg>`,
-    ],
-  });
-}
+  getOwlCarousel($(".owl-carousel"));
+};
+
 async function getPlaceId(place_id) {
   try {
     if (!place_id) {
@@ -466,6 +426,7 @@ function getOwlCarousel(element) {
     loop: true,
     margin: 10,
     nav: true,
+    dots: false,
     responsive: {
       0: {
         items: 1,
