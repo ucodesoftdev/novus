@@ -344,6 +344,7 @@
     border-top: 30px solid var(--main-bg-color);
     border-left: 30px solid transparent;
     top: auto;
+    bottom: -1px;
   }
   .location-data::after {
     bottom: 3px;
