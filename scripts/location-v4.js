@@ -180,48 +180,61 @@ async function callback(category, map, novusMap) {
     position: { lat: -37.8278762, lng: 144.9665503 },
     icon: "https://uploads-ssl.webflow.com/6227f17380fa37ea2192faa4/65082b1e3487e4f9f004f556_location-marker.svg",
   });
-  const markers = [];
   bounds.extend(defaultMarker.position);
+  const markers = [];
   for (let i = 0; i < results.length; i++) {
-    const marker = await createMarker(
-      results[i],
-      map,
-      bounds,
-      markers,
-      colorCode,
-      icons
+    getLatLong(`${results[i].title} ${results[i].address}`).then(
+      (locationResult) => {
+        createMarker(
+          i,
+          results[i],
+          map,
+          bounds,
+          markers,
+          colorCode,
+          icons,
+          locationResult
+        );
+
+        if (i === results.length - 1) {
+          if (window.screen.width <= 1024) {
+            map.fitBounds(bounds, { top: 300 });
+            return;
+          }
+          map.fitBounds(bounds);
+        }
+      }
     );
-    markers.push({ marker, type: results[i].type });
-    if (i === 0 && markers[0]) {
-      openInfoWindow(results[i], colorCode, markers);
-      markers[0].marker.setIcon(icons[results[i].type].active);
-    }
-  }
-  map.fitBounds(bounds);
-  if (window.screen.width <= 1024) {
-     map.panBy(0, document.querySelector(".map-container").clientHeight / -3);
-    novusMap.panBy(
-    0,
-    document.querySelector(".sec-location-v4-5").clientHeight / 2.5
-  );
   }
 }
-async function createMarker(place, map, bounds, markers, colorCode, icons) {
+
+async function createMarker(index, place, map, bounds, markers, colorCode, icons, locationResult) {
+  const markerLatLng = {
+    lat: locationResult?.geometry?.location.lat(),
+    lng: locationResult?.geometry?.location.lng(),
+  };
+  
   const marker = new google.maps.Marker({
     map,
-    position: await getLatLong(`${place.title} ${place.address}`),
+    position: markerLatLng,
     icon: icons[place.type].default,
   });
-
+  
+  markers.push({ marker, type: place.type });
   bounds.extend(marker.position);
+
+  if (index === 0 && markers[0]) {
+    openInfoWindow(place, colorCode, markers, locationResult?.place_id);
+    markers[0].marker.setIcon(icons[place.type].active);
+  }
+  
   google.maps.event.addListener(marker, "click", () => {
     for (let i = 0; i < markers.length; i++) {
       markers[i].marker.setIcon(icons[markers[i].type].default);
     }
     marker.setIcon(icons[place.type].active);
-    openInfoWindow(place, colorCode, markers);
+    openInfoWindow(place, colorCode, markers, locationResult?.place_id);
   });
-  return marker;
 }
 
 function createNovusMarker(map) {
@@ -289,8 +302,8 @@ function createNovusMarker(map) {
   novusMapElement.parentNode.append(infoWindow);
 }
 
-async function openInfoWindow(location, colorCode, markers) {
-  const images = await getPlaceId(`${location.title} ${location.address}`);
+async function openInfoWindow(location, colorCode, markers, place_id) {
+  const images = await getPlaceId(place_id);
   const locationMap = document.querySelector(".location-map");
   let infoDiv = document.querySelector(".location-data");
   let infoTitle = document.querySelector(".info-title");
@@ -400,14 +413,12 @@ async function openInfoWindow(location, colorCode, markers) {
 }
 async function getPlaceId(address) {
   try {
-    const geocoder = new google.maps.Geocoder();
-    const { results } = await geocoder.geocode({ address: address });
-    if (!results || !results.length || !results[0].place_id) {
+    if (!place_id) {
       console.info("Address not found");
       return null;
     }
     return new Promise((resolve, reject) => {
-      const request = { placeId: results[0].place_id };
+      const request = { placeId: place_id };
       service.getDetails(request, (data, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
           let images = [];
@@ -439,10 +450,7 @@ async function getLatLong(address) {
       return null;
     }
 
-    return {
-      lat: results[0]?.geometry?.location.lat(),
-      lng: results[0]?.geometry?.location.lng(),
-    };
+    return results[0];
   } catch (error) {
     console.error(error);
     return null;
