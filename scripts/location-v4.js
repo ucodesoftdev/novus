@@ -135,7 +135,7 @@ function initMap() {
     ],
   });
 
-  createMarkers(map);
+  createMarkers();
 
   //Novus map integration
 
@@ -166,7 +166,7 @@ function initMap() {
   createNovusMarker(novusMap);
 }
 
-function createMarkers(map) {
+function createMarkers() {
   const bounds = new google.maps.LatLngBounds();
 
   const defaultMarker = new google.maps.Marker({
@@ -176,58 +176,53 @@ function createMarkers(map) {
   });
   bounds.extend(defaultMarker.position);
 
-  const newLocations = []
-   for (let i = 0; i < locations.length; i++) {
+  for (let i = 0; i < locations.length; i++) {
     const currentLocation = locations[i];
-    getLatLong(`${currentLocation.title} ${currentLocation.address}`).then(
-      (locationResult) => {
-        const markerLatLng = {
-          lat: locationResult?.geometry?.location.lat(),
-          lng: locationResult?.geometry?.location.lng(),
-        };
-        const marker = new google.maps.Marker({
-          map,
-          position: markerLatLng,
-          icon: icons[currentLocation.type].default,
-        });
-        newLocations.push({...currentLocation, place_id: locationResult?.place_id})
-        
-        google.maps.event.addListener(marker, "click", () => {
-          for (let i = 0; i < allMarkers.length; i++) {
-            allMarkers[i].marker.setIcon(icons[allMarkers[i].type].default);
-          }
 
-          marker.setIcon(icons[currentLocation.type].active);
-          openInfoWindow({
-            type: currentLocation.type,
-            title: currentLocation.title,
-            address: currentLocation.address,
-            place_id: locationResult?.place_id,
-          });
-        });
+    const markerLatLng = {
+      lat: locations[i]?.lat,
+      lng: locations[i]?.lng,
+    };
+    const marker = new google.maps.Marker({
+      map,
+      position: markerLatLng,
+      icon: icons[currentLocation.type].default,
+    });
 
-        bounds.extend(marker.position);
-        allMarkers.push({ marker, type: currentLocation.type });
-        currentTabMarkers.push({ marker, type: currentLocation.type });
-        if (i === 0) {
-          openInfoWindow({
-            type: currentLocation.type,
-            title: currentLocation.title,
-            address: currentLocation.address,
-            place_id: locationResult?.place_id,
-          });
-        }
-
-        if (i === locations.length - 1) {
-          console.log(newLocations)
-          if (window.screen.width <= 1024) {
-            map.fitBounds(bounds, { top: 300 });
-            return;
-          }
-          map.fitBounds(bounds);
-        }
+    google.maps.event.addListener(marker, "click", () => {
+      for (let i = 0; i < allMarkers.length; i++) {
+        allMarkers[i].marker.setIcon(icons[allMarkers[i].type].default);
       }
-    );
+
+      marker.setIcon(icons[currentLocation.type].active);
+      openInfoWindow({
+        type: currentLocation.type,
+        title: currentLocation.title,
+        address: currentLocation.address,
+        place_id: currentLocation.place_id,
+      });
+    });
+
+    bounds.extend(marker.position);
+    allMarkers.push({ marker, type: currentLocation.type });
+    currentTabMarkers.push({ marker, type: currentLocation.type });
+
+    if (i === 0) {
+      openInfoWindow({
+        type: currentLocation.type,
+        title: currentLocation.title,
+        address: currentLocation.address,
+        place_id: currentLocation.place_id,
+      });
+    }
+
+    if (i === locations.length - 1) {
+      if (window.screen.width <= 1024) {
+        map.fitBounds(bounds, { top: 300 });
+        return;
+      }
+      map.fitBounds(bounds);
+    }
   }
 }
 
@@ -345,7 +340,7 @@ const openInfoWindow = async (location) => {
 
   infoDiv.classList.add("location-data");
 
-  const images = await getImageByPlaceId(location.place_id);
+  const images = (await getImageByPlaceId(location.place_id)) ?? [];
 
   carouselContainer = "";
 
@@ -406,8 +401,8 @@ const openInfoWindow = async (location) => {
 };
 
 async function getImageByPlaceId(place_id) {
+  const service = new window.google.maps.places.PlacesService(map);
   try {
-    throw Error("fdlkgjfd;gjkdfjglkjdfl");
     if (!place_id) {
       console.info("Address not found");
       return null;
@@ -457,31 +452,3 @@ function getOwlCarousel(element, color = "#eec485") {
     ],
   });
 }
-
-async function getLatLong(address) {
-  try {
-    const geocoder = new google.maps.Geocoder();
-    const { results } = await geocoder.geocode({ address: address });
-    if (!results || !results.length) {
-      console.info("Address not found");
-      return null;
-    }
-
-    return results[0];
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-$(document).ready(function () {
-  $(".location-filter").click(function () {
-    $(this).attr("tabindex", 1).focus();
-    $(this).toggleClass("active");
-    $(this).find(".location-menu").slideToggle(300);
-  });
-  $(".location-filter").focusout(function () {
-    $(this).removeClass("active");
-    $(this).find(".location-menu").slideUp(300);
-  });
-});
