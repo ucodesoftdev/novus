@@ -441,7 +441,6 @@ function getOwlCarousel(element, color = "#eec485") {
   }
   element.owlCarousel({
     loop: false,
-    margin: 10,
     nav: true,
     dots: false,
     responsive: {
