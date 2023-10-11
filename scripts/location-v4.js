@@ -176,6 +176,7 @@ function createMarkers(map) {
   });
   bounds.extend(defaultMarker.position);
 
+  const newLocations = []
    for (let i = 0; i < locations.length; i++) {
     const currentLocation = locations[i];
     getLatLong(`${currentLocation.title} ${currentLocation.address}`).then(
@@ -189,7 +190,8 @@ function createMarkers(map) {
           position: markerLatLng,
           icon: icons[currentLocation.type].default,
         });
-
+        newLocations.push({...currentLocation, place_id: locationResult?.place_id})
+        
         google.maps.event.addListener(marker, "click", () => {
           for (let i = 0; i < allMarkers.length; i++) {
             allMarkers[i].marker.setIcon(icons[allMarkers[i].type].default);
@@ -217,6 +219,7 @@ function createMarkers(map) {
         }
 
         if (i === locations.length - 1) {
+          console.log(newLocations)
           if (window.screen.width <= 1024) {
             map.fitBounds(bounds, { top: 300 });
             return;
