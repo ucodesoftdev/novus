@@ -306,12 +306,12 @@
   padding: 0 20px 15px;
 }
 
-a[data-selected="true"],
+button[data-selected="false"],
 li[data-selected="false"] {
   background-color: rgba(115, 120, 89);
 }
 
-a[data-selected="true"],
+button[data-selected="true"],
 li[data-selected="true"] {
   background-color: rgba(115, 120, 89, 0.5);
 }
