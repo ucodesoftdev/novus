@@ -417,7 +417,7 @@ async function getImageByPlaceId(place_id) {
               if(index > 0) {
                 return
               }
-              images.push(photo.getUrl({ maxWidth: 500, maxHeight: 500 }));
+              images.push(photo.getUrl({ maxWidth: 600, maxHeight: 500 }));
             });
           }
           resolve(images);
