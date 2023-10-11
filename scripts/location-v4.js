@@ -467,7 +467,6 @@ async function getLatLong(address) {
       return null;
     }
 
-    console.log("markers", results[0]);
     return results[0];
   } catch (error) {
     console.error(error);
