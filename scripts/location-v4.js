@@ -176,53 +176,55 @@ function createMarkers(map) {
   });
   bounds.extend(defaultMarker.position);
 
-  for (let i = 0; i < locations.length; i++) {
+   for (let i = 0; i < locations.length; i++) {
     const currentLocation = locations[i];
+    getLatLong(`${currentLocation.title} ${currentLocation.address}`).then(
+      (locationResult) => {
+        const markerLatLng = {
+          lat: locationResult?.geometry?.location.lat(),
+          lng: locationResult?.geometry?.location.lng(),
+        };
+        const marker = new google.maps.Marker({
+          map,
+          position: markerLatLng,
+          icon: icons[currentLocation.type].default,
+        });
 
-    console.log("location", locations[i]);
+        google.maps.event.addListener(marker, "click", () => {
+          for (let i = 0; i < allMarkers.length; i++) {
+            allMarkers[i].marker.setIcon(icons[allMarkers[i].type].default);
+          }
 
-    const markerLatLng = {
-      lat: locations[i]?.lat,
-      lng: locations[i]?.lng,
-    };
-    const marker = new google.maps.Marker({
-      map,
-      position: markerLatLng,
-      icon: icons[currentLocation.type].default,
-    });
+          marker.setIcon(icons[currentLocation.type].active);
+          openInfoWindow({
+            type: currentLocation.type,
+            title: currentLocation.title,
+            address: currentLocation.address,
+            place_id: locationResult?.place_id,
+          });
+        });
 
-    google.maps.event.addListener(marker, "click", () => {
-      for (let i = 0; i < allMarkers.length; i++) {
-        allMarkers[i].marker.setIcon(icons[allMarkers[i].type].default);
+        bounds.extend(marker.position);
+        allMarkers.push({ marker, type: currentLocation.type });
+        currentTabMarkers.push({ marker, type: currentLocation.type });
+        if (i === 0) {
+          openInfoWindow({
+            type: currentLocation.type,
+            title: currentLocation.title,
+            address: currentLocation.address,
+            place_id: locationResult?.place_id,
+          });
+        }
+
+        if (i === locations.length - 1) {
+          if (window.screen.width <= 1024) {
+            map.fitBounds(bounds, { top: 300 });
+            return;
+          }
+          map.fitBounds(bounds);
+        }
       }
-
-      marker.setIcon(icons[currentLocation.type].active);
-      openInfoWindow({
-        type: currentLocation.type,
-        title: currentLocation.title,
-        address: currentLocation.address,
-      });
-    });
-
-    bounds.extend(marker.position);
-    allMarkers.push({ marker, type: currentLocation.type });
-    currentTabMarkers.push({ marker, type: currentLocation.type });
-
-    if (i === 0) {
-      openInfoWindow({
-        type: currentLocation.type,
-        title: currentLocation.title,
-        address: currentLocation.address,
-      });
-    }
-
-    if (i === locations.length - 1) {
-      if (window.screen.width <= 1024) {
-        map.fitBounds(bounds, { top: 300 });
-        return;
-      }
-      map.fitBounds(bounds);
-    }
+    );
   }
 }
 
