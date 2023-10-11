@@ -195,7 +195,7 @@
   transform: translateY(-43%);
   left: 5px;
   right: 5px;
-  display: flex;
+  display: none;
   justify-content: space-between;
 }
 .owl-nav > * {
