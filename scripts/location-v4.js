@@ -408,12 +408,15 @@ async function getImageByPlaceId(place_id) {
       return null;
     }
     return new Promise((resolve, reject) => {
-      const request = { placeId: place_id };
+      const request = { placeId: place_id, fields: ["photo"] };
       service.getDetails(request, (data, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
           let images = [];
           if (data.photos) {
-            data.photos.forEach((photo) => {
+            data.photos.forEach((photo, index) => {
+              if(index > 4) {
+                return
+              }
               images.push(photo.getUrl({ maxWidth: 500, maxHeight: 500 }));
             });
           }
