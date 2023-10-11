@@ -414,7 +414,7 @@ async function getImageByPlaceId(place_id) {
           let images = [];
           if (data.photos) {
             data.photos.forEach((photo, index) => {
-              if(index > 1) {
+              if(index > 0) {
                 return
               }
               images.push(photo.getUrl({ maxWidth: 500, maxHeight: 500 }));
