@@ -308,12 +308,12 @@
 
 button[data-selected="false"],
 li[data-selected="false"] {
-  background-color: rgba(55, 56, 43);
+   background-color: rgb(55, 56, 43);
 }
 
 button[data-selected="true"],
 li[data-selected="true"] {
-  background-color: rgba(55, 56, 43, 0.5);
+   background-color: rgb(80, 82, 62);
 }
 
 @media screen and (max-width: 1024px) {
