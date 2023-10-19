@@ -14,6 +14,14 @@ function verifyCaptcha() {
   isVerified = true;
 }
 
+window.loadScript = function () {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = `https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit`;
+  script.defer = true;
+  document.body.appendChild(script);
+};
+
 $(document).ready(function () {
   $('[data-toggle="datepicker"]').datepicker({
     format: "dd/mm/yyyy",
