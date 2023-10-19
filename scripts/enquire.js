@@ -21,6 +21,7 @@ window.loadScript = function () {
   script.defer = true;
   document.body.appendChild(script);
 };
+window.onload = loadScript;
 
 $(document).ready(function () {
   $('[data-toggle="datepicker"]').datepicker({
