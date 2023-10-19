@@ -1,7 +1,7 @@
 let isVerified = false;
+const captchaBox = document.querySelectorAll(".js-google-recaptcha");
 
 var onloadCallback = function () {
-  const captchaBox = document.querySelectorAll(".js-google-recaptcha");
   captchaBox.forEach((element) => {
     grecaptcha.render(element, {
       sitekey: "6Leak5UoAAAAADwTc3Tn8A0UE2ihqOVtFByJew67",
@@ -68,10 +68,16 @@ $(document).ready(function () {
   $(".nav-form-close-btn").on("click", function () {
     $(".nav-form-wrapper").find("form").validate(rules).resetForm();
     isVerified = false;
+    captchaBox.forEach((element, index)=>{
+       grecaptcha.reset(index);
+    })
   });
 
   $("#js-enquire-now").on("click", function () {
     isVerified = false;
+    captchaBox.forEach((element, index)=>{
+       grecaptcha.reset(index);
+    })
   });
 
   const preferedRentInput = document.querySelectorAll(".preferred-rent");
