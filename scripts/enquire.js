@@ -1,12 +1,14 @@
 let isVerified = false;
 const captchaBox = document.querySelectorAll(".js-google-recaptcha");
+const reCaptchaWidgets = []
 
 var onloadCallback = function () {
   captchaBox.forEach((element) => {
-    grecaptcha.render(element, {
+    const widget = grecaptcha.render(element, {
       sitekey: "6Leak5UoAAAAADwTc3Tn8A0UE2ihqOVtFByJew67",
       callback: "verifyCaptcha",
     });
+    reCaptchaWidgets.push(widget)
   });
 };
 
@@ -68,17 +70,17 @@ $(document).ready(function () {
   $(".nav-form-close-btn").on("click", function () {
     $(".nav-form-wrapper").find("form").validate(rules).resetForm();
     isVerified = false;
-    captchaBox.forEach((element, index)=>{
+    reCaptchaWidgets.forEach((widget, index)=>{
        console.log("f",index);
-       grecaptcha.reset(index);
+       grecaptcha.reset(widget);
     })
   });
 
   $("#js-enquire-now").on("click", function () {
     isVerified = false;
-    captchaBox.forEach((element, index)=>{
+    reCaptchaWidgets.forEach((widget, index)=>{
       console.log("s",index);
-       grecaptcha.reset(index);
+       grecaptcha.reset(widget);
     })
   });
 
