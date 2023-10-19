@@ -69,6 +69,7 @@ $(document).ready(function () {
     $(".nav-form-wrapper").find("form").validate(rules).resetForm();
     isVerified = false;
     captchaBox.forEach((element, index)=>{
+       console.log("f",index);
        grecaptcha.reset(index);
     })
   });
@@ -76,6 +77,7 @@ $(document).ready(function () {
   $("#js-enquire-now").on("click", function () {
     isVerified = false;
     captchaBox.forEach((element, index)=>{
+      console.log("s",index);
        grecaptcha.reset(index);
     })
   });
